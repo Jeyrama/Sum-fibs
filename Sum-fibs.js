@@ -14,3 +14,26 @@ Example:
 
 
 // Solution
+
+function sumFibs(n) {
+  let [a, b] = [1, 1];
+  let result = 0;
+  
+  while (n--) {
+    if (a % 2 == 0) result += a;
+    [a, b] = [b, a+b];
+  }
+  
+  return result;
+};
+
+// or
+
+function sumFibs(n) {
+  const r = [0, 1];
+  for (let i = 2; i < n + 1; i++) {
+    r.push(r[i - 2] + r[i - 1]);
+  }
+
+  return r.reduce((acc, k) => 0 == k % 2 ? acc + k : acc, 0)
+};
